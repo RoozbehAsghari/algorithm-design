@@ -30,6 +30,7 @@ jobs:
       # Prepare content
       - run: |
           git clone --depth 1 -b main https://github.com/ceituut/ceituut.github.io.git
+          rm -d -f -r .github/
           mv -v ceituut.github.io/outer-pages/* .github/
           chmod +x .github/prepare-content.sh
           ./.github/prepare-content.sh
