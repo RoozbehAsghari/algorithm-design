@@ -5,7 +5,7 @@ on:
   push:
     branches: ["main"]
   repository_dispatch:
-    types: [update-content]
+    types: [update-course]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,7 +30,7 @@ jobs:
       # Prepare content
       - run: |
           git clone --depth 1 -b main https://github.com/ceituut/ceituut.github.io.git
-          mv -v ceituut.github.io/.github_outer/* .github/
+          mv -v ceituut.github.io/outer-pages/* .github/
           chmod +x .github/prepare-content.sh
           ./.github/prepare-content.sh
         shell: bash
