@@ -42,6 +42,7 @@ jobs:
         with:
           python-version: '3.10'
       - run: |
+          sudo apt-get install python-yaml
           rootFolderName=$(basename `git rev-parse --show-toplevel`)
           export rootFolderName
           python .github/update-config.py
