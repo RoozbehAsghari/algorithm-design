@@ -1,7 +1,7 @@
 name: Deploy Jekyll site to course Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the default branch or when update-course triggered
   push:
     branches: ["main"]
   repository_dispatch:
@@ -25,9 +25,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Prepare content
       - name: Checkout
         uses: actions/checkout@v3
-      # Prepare content
       - run: |
           git clone --depth 1 -b main https://github.com/ceituut/ceituut.github.io.git
           rm -d -f -r .github/
@@ -45,7 +45,8 @@ jobs:
           rootFolderName=$(basename `git rev-parse --show-toplevel`)
           export rootFolderName
           python update-config.yml
-          rm -d -f -r .git
+          ./.github/exclude.sh
+        shell: bash
       - name: Setup Ruby
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
