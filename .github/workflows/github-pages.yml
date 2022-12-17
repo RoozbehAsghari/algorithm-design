@@ -36,19 +36,6 @@ jobs:
           chmod +x .github/prepare-content.sh
           ./.github/prepare-content.sh
         shell: bash
-      # Set repository name in _config.yml
-      - name: Update _config.yml
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - run: |
-          pip install pyyaml
-          rootFolderName=$(basename `git rev-parse --show-toplevel`)
-          export rootFolderName
-          python .github/update-config.py
-          chmod +x ./.github/exclude.sh
-          ./.github/exclude.sh
-        shell: bash
       - name: Setup Ruby
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
