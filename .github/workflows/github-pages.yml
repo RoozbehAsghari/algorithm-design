@@ -46,6 +46,7 @@ jobs:
           rootFolderName=$(basename `git rev-parse --show-toplevel`)
           export rootFolderName
           python .github/update-config.py
+          chmod +x ./.github/exclude.sh
           ./.github/exclude.sh
         shell: bash
       - name: Setup Ruby
