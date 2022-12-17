@@ -44,7 +44,7 @@ jobs:
       - run: |
           rootFolderName=$(basename `git rev-parse --show-toplevel`)
           export rootFolderName
-          python update-config.yml
+          python update-config.py
           ./.github/exclude.sh
         shell: bash
       - name: Setup Ruby
